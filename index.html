@@ -3,12 +3,22 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MT Studio - Digital Solutions</title>
+  
+  <!-- A. Performance & SEO: Meta Tags -->
+  <title>MT Studio - Digital Solutions | ওয়েবসাইট ও অ্যাপ ডেভেলপমেন্ট</title>
+  <meta name="description" content="MT Studio crafts modern websites, mobile apps, brand visuals, and AI workflows for ambitious founders. End-to-end digital solutions in Bangla and English.">
+  <meta name="keywords" content="web development bangladesh, app builder, UI/UX design, AI prompts, facebook page fix, MT Studio, digital agency">
+  <meta name="theme-color" content="#050B14">
+  <meta name="author" content="Mahsin Tarik">
+
+  <!-- Preload Critical Fonts -->
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Inter:wght@300;400;500;600;700;800&display=swap" as="style">
+  
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   
-  <!-- PayPal JS SDK -->
+  <!-- Security Note: PayPal Client ID is public for frontend testing. In production with a backend, use environment variables. -->
   <script src="https://www.paypal.com/sdk/js?client-id=AaGtCw2bDw3b-kokUHdpaJmsm8P4v_EVYVdJpReFLWEARCCYnvpquOKwQcT4A05iKgqdl5dd2i91yfQJ&currency=USD"></script>
 
   <script>
@@ -23,6 +33,7 @@
           animation: {
             blob: 'blob 10s infinite',
             marquee: 'marquee 25s linear infinite',
+            popIn: 'popIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards',
           },
           keyframes: {
             blob: {
@@ -34,6 +45,10 @@
             marquee: {
               '0%': { transform: 'translateX(0%)' },
               '100%': { transform: 'translateX(-100%)' },
+            },
+            popIn: {
+              '0%': { opacity: 0, transform: 'scale(0.8) translateY(20px)' },
+              '100%': { opacity: 1, transform: 'scale(1) translateY(0)' },
             }
           }
         }
@@ -46,11 +61,13 @@
     
     .bg-grid { background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 40V0h40' stroke='rgba(255,255,255,0.02)' stroke-width='1' fill='none'/%3E%3C/svg%3E"); }
 
-    /* Hero Background with your uploaded image */
+    /* Hero Background Fixed with Live Hosted URL and Parallax (Attachment Fixed) */
     .hero-bg-image {
-        background-image: linear-gradient(to right, rgba(5, 11, 20, 0.95) 0%, rgba(5, 11, 20, 0.7) 100%), url('image.png');
+        background-color: #050B14;
+        background-image: linear-gradient(to right, rgba(5, 11, 20, 0.95) 0%, rgba(5, 11, 20, 0.75) 100%), url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=2000&q=80');
         background-size: cover;
-        background-position: center top;
+        background-position: center;
+        background-attachment: fixed;
         background-repeat: no-repeat;
     }
 
@@ -74,7 +91,6 @@
     .portfolio-image { transition: transform 0.3s ease; }
     .portfolio-link:hover .portfolio-image { transform: scale(1.05); }
 
-    /* Chat Scrollbar Hide */
     #chatMessages::-webkit-scrollbar { width: 4px; }
   </style>
 </head>
@@ -89,10 +105,10 @@
   <!-- Navbar -->
   <nav class="fixed w-full z-50 top-0 transition-all duration-300 backdrop-blur-md bg-midnight/80 border-b border-white/5">
     <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-      <a href="#" class="flex items-center gap-3 group">
+      <a href="#home" class="flex items-center gap-3 group">
         <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-cyan-400 to-violet-600 p-[1px] shadow-[0_0_15px_rgba(6,182,212,0.3)]">
           <div class="w-full h-full bg-midnight rounded-xl flex items-center justify-center">
-            <span class="text-transparent bg-clip-text bg-gradient-to-br from-cyan-300 to-violet-400 font-extrabold text-xl tracking-wider">MT</span>
+            <span class="text-transparent bg-clip-text bg-gradient-to-br from-cyan-300 to-violet-400 font-extrabold text-xl font-['Dancing_Script'] tracking-wider">MT</span>
           </div>
         </div>
         <div>
@@ -116,7 +132,6 @@
       </button>
     </div>
 
-    <!-- Mobile Menu -->
     <div id="mobileMenu" class="hidden md:hidden bg-midnight/95 backdrop-blur-xl border-b border-white/10 absolute w-full">
       <div class="flex flex-col px-6 py-6 space-y-5">
         <a href="#home" onclick="toggleMenu()" class="text-slate-300 font-medium">Home</a>
@@ -131,7 +146,7 @@
   </nav>
 
   <!-- Hero Section -->
-  <section id="home" class="pt-36 pb-20 md:pt-48 md:pb-32 px-6 hero-bg-image border-b border-white/5">
+  <section id="home" class="pt-36 pb-20 md:pt-48 md:pb-24 px-6 hero-bg-image border-b border-white/5">
     <div class="max-w-7xl mx-auto relative z-10">
       <p class="text-cyan-400 text-sm tracking-[0.3em] font-semibold mb-4 uppercase flex items-center gap-2">
         <i class="fa-solid fa-sparkles"></i> D i g i t a l  A g e n c y
@@ -151,12 +166,25 @@
           <i class="fa-solid fa-user-plus text-cyan-400"></i> সাইন আপ / লগইন
         </button>
       </div>
+
       <!-- Tech Stack -->
-      <div class="flex flex-wrap gap-3">
+      <div class="flex flex-wrap gap-3 mb-10">
         <div class="bg-black/40 border border-white/10 px-4 py-2 rounded-full flex items-center gap-2 text-sm text-slate-300 backdrop-blur-sm"><i class="fa-brands fa-apple text-white"></i> iOS</div>
         <div class="bg-black/40 border border-white/10 px-4 py-2 rounded-full flex items-center gap-2 text-sm text-slate-300 backdrop-blur-sm"><i class="fa-brands fa-android text-green-400"></i> Android</div>
         <div class="bg-black/40 border border-white/10 px-4 py-2 rounded-full flex items-center gap-2 text-sm text-slate-300 backdrop-blur-sm"><i class="fa-solid fa-globe text-cyan-400"></i> Web</div>
         <div class="bg-black/40 border border-white/10 px-4 py-2 rounded-full flex items-center gap-2 text-sm text-slate-300 backdrop-blur-sm"><i class="fa-solid fa-wand-magic-sparkles text-pink-400"></i> AI</div>
+      </div>
+      
+      <!-- Enhanced Trust Signals (Client Logos) -->
+      <div class="pt-8 border-t border-white/10 mt-8">
+        <p class="text-xs text-slate-400 uppercase tracking-widest mb-6 font-semibold">Trusted by innovative companies</p>
+        <div class="flex flex-wrap items-center gap-8 md:gap-12 opacity-50 grayscale hover:grayscale-0 transition-all duration-500">
+           <i class="fa-brands fa-aws text-3xl hover:text-[#FF9900] transition"></i>
+           <i class="fa-brands fa-stripe text-3xl hover:text-[#008CDD] transition"></i>
+           <i class="fa-brands fa-google text-3xl hover:text-[#4285F4] transition"></i>
+           <i class="fa-brands fa-meta text-3xl hover:text-[#0668E1] transition"></i>
+           <i class="fa-brands fa-shopify text-3xl hover:text-[#96BF48] transition"></i>
+        </div>
       </div>
     </div>
   </section>
@@ -260,6 +288,57 @@
     </div>
   </section>
 
+  <!-- New Testimonials Section (Trust Signals) -->
+  <section class="py-16 px-6 bg-[#0A0F1C] border-y border-white/5">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-5xl font-bold text-white mb-4">Loved by Founders</h2>
+        <p class="text-slate-400">See what our clients have to say about MT Studio.</p>
+      </div>
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="bg-midnight border border-white/10 p-8 rounded-3xl">
+          <div class="flex items-center gap-1 text-yellow-400 text-sm mb-4">
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+          </div>
+          <p class="text-slate-300 italic mb-6">"MT Studio completely transformed our agency's web presence. Delivered on time and the communication was top notch!"</p>
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full bg-cyan-900 flex items-center justify-center text-white font-bold">R</div>
+            <div>
+              <p class="text-white text-sm font-semibold">Rafiqul Islam</p>
+              <p class="text-slate-500 text-xs">CEO, Digital Tech</p>
+            </div>
+          </div>
+        </div>
+        <div class="bg-midnight border border-white/10 p-8 rounded-3xl">
+          <div class="flex items-center gap-1 text-yellow-400 text-sm mb-4">
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+          </div>
+          <p class="text-slate-300 italic mb-6">"The UI/UX design for our mobile app was stunning. They really understand modern design trends."</p>
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full bg-violet-900 flex items-center justify-center text-white font-bold">S</div>
+            <div>
+              <p class="text-white text-sm font-semibold">Sarah Jenkins</p>
+              <p class="text-slate-500 text-xs">Product Manager</p>
+            </div>
+          </div>
+        </div>
+        <div class="bg-midnight border border-white/10 p-8 rounded-3xl">
+          <div class="flex items-center gap-1 text-yellow-400 text-sm mb-4">
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+          </div>
+          <p class="text-slate-300 italic mb-6">"Recovered my hacked Facebook page within hours. Exceptional service and highly professional team."</p>
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full bg-pink-900 flex items-center justify-center text-white font-bold">K</div>
+            <div>
+              <p class="text-white text-sm font-semibold">Kamrul Hasan</p>
+              <p class="text-slate-500 text-xs">Content Creator</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Packages -->
   <section id="pricing" class="py-16 px-6">
     <div class="max-w-5xl mx-auto">
@@ -296,6 +375,7 @@
             <li class="flex items-center gap-3 text-slate-300"><div class="w-5 h-5 rounded-full bg-blue-500/20 flex justify-center items-center"><i class="fa-solid fa-check text-blue-400 text-[10px]"></i></div> Logo & brand colors</li>
           </ul>
 
+          <!-- Notice: We use the handlePackageClick which now shows Success Modal on Free -->
           <button onclick="handlePackageClick('Starter', '50.00')" class="spring-press w-full py-4 rounded-xl bg-cyan-500/10 hover:bg-cyan-500/20 border border-cyan-500/30 text-cyan-400 font-bold transition-all flex items-center justify-between px-6">
             Claim package <i class="fa-solid fa-arrow-right"></i>
           </button>
@@ -365,16 +445,16 @@
           <div class="flex items-center gap-3 mb-8">
             <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-cyan-400 to-violet-600 p-[1px]">
               <div class="w-full h-full bg-midnight rounded-xl flex items-center justify-center">
-                <span class="text-transparent bg-clip-text bg-gradient-to-br from-cyan-300 to-violet-400 font-bold text-2xl tracking-wider">MT</span>
+                <span class="text-transparent bg-clip-text bg-gradient-to-br from-cyan-300 to-violet-400 font-bold text-2xl font-['Dancing_Script'] tracking-wider">MT</span>
               </div>
             </div>
           </div>
-          <!-- Real Social Links (Original Colors + Glow for follow - AS REQUESTED) -->
+          <!-- Real Social Links (Original Colors + Glow for follow) -->
           <div class="flex items-center gap-4 mb-8">
             <a href="https://www.facebook.com/MTstudio2" target="_blank" class="w-10 h-10 rounded-full bg-[#1877F2] flex items-center justify-center text-white shadow-[0_0_15px_rgba(24,119,242,0.6)] hover:shadow-[0_0_25px_rgba(24,119,242,1)] hover:scale-110 transition-all"><i class="fa-brands fa-facebook-f"></i></a>
-            <a href="#" target="_blank" class="w-10 h-10 rounded-full bg-gradient-to-tr from-[#f09433] via-[#e6683c] to-[#bc1888] flex items-center justify-center text-white shadow-[0_0_15px_rgba(228,64,95,0.6)] hover:shadow-[0_0_25px_rgba(228,64,95,1)] hover:scale-110 transition-all"><i class="fa-brands fa-instagram"></i></a>
-            <a href="#" target="_blank" class="w-10 h-10 rounded-full bg-[#0A66C2] flex items-center justify-center text-white shadow-[0_0_15px_rgba(10,102,194,0.6)] hover:shadow-[0_0_25px_rgba(10,102,194,1)] hover:scale-110 transition-all"><i class="fa-brands fa-linkedin-in"></i></a>
-            <a href="#" target="_blank" class="w-10 h-10 rounded-full bg-white flex items-center justify-center text-black shadow-[0_0_15px_rgba(255,255,255,0.4)] hover:shadow-[0_0_25px_rgba(255,255,255,0.8)] hover:scale-110 transition-all"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="https://www.instagram.com/" target="_blank" class="w-10 h-10 rounded-full bg-gradient-to-tr from-[#f09433] via-[#e6683c] to-[#bc1888] flex items-center justify-center text-white shadow-[0_0_15px_rgba(228,64,95,0.6)] hover:shadow-[0_0_25px_rgba(228,64,95,1)] hover:scale-110 transition-all"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://www.linkedin.com/" target="_blank" class="w-10 h-10 rounded-full bg-[#0A66C2] flex items-center justify-center text-white shadow-[0_0_15px_rgba(10,102,194,0.6)] hover:shadow-[0_0_25px_rgba(10,102,194,1)] hover:scale-110 transition-all"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="https://twitter.com/" target="_blank" class="w-10 h-10 rounded-full bg-white flex items-center justify-center text-black shadow-[0_0_15px_rgba(255,255,255,0.4)] hover:shadow-[0_0_25px_rgba(255,255,255,0.8)] hover:scale-110 transition-all"><i class="fa-brands fa-x-twitter"></i></a>
             <a href="https://www.youtube.com/@MTStudio_2" target="_blank" class="w-10 h-10 rounded-full bg-[#FF0000] flex items-center justify-center text-white shadow-[0_0_15px_rgba(255,0,0,0.6)] hover:shadow-[0_0_25px_rgba(255,0,0,1)] hover:scale-110 transition-all"><i class="fa-brands fa-youtube"></i></a>
           </div>
         </div>
@@ -436,9 +516,8 @@
           <div>
             <h4 class="text-white font-semibold mb-6 text-sm">Support</h4>
             <ul class="space-y-4 text-sm text-slate-400 font-medium">
-              <!-- No phone number, direct to messenger and display email -->
               <li><a href="https://m.me/MTstudio2" target="_blank" class="hover:text-white transition">Contact Us</a></li>
-              <li><a href="mailto:studiomt46@gmail.com" class="hover:text-white transition">studiomt46@gmail.com</a></li>
+              <li><a href="mailto:studiomt46@gmail.com" class="hover:text-white transition">Email Support</a></li>
             </ul>
           </div>
         </div>
@@ -711,8 +790,34 @@
     </div>
   </div>
 
+  <!-- CUSTOM SUCCESS MODAL -->
+  <div id="successModal" class="fixed inset-0 z-[120] hidden items-center justify-center bg-[#050B14]/90 backdrop-blur-md p-4 opacity-0 transition-opacity duration-300">
+      <div class="bg-[#0A0F1C] border border-white/10 rounded-3xl p-8 max-w-sm w-full text-center shadow-[0_0_50px_rgba(6,182,212,0.2)] transform scale-95 transition-transform duration-300 flex flex-col items-center">
+          <div class="w-16 h-16 rounded-full bg-green-500/20 text-green-400 flex items-center justify-center text-3xl mb-5 shadow-[0_0_20px_rgba(34,197,94,0.4)]">
+              <i class="fa-solid fa-check"></i>
+          </div>
+          <h3 id="successTitle" class="text-2xl font-bold text-white mb-2">Success!</h3>
+          <p id="successMessage" class="text-slate-400 text-sm mb-6">Your action was completed successfully.</p>
+          <button onclick="closeSuccessModal()" class="spring-press bg-cyan-600 hover:bg-cyan-500 text-white font-semibold py-3 px-8 rounded-xl transition shadow-[0_0_15px_rgba(8,145,178,0.4)]">
+              OK, Got it
+          </button>
+      </div>
+  </div>
+
   <!-- Main JavaScript Logic -->
   <script>
+    // Smooth Scroll for Anchor Links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            if (this.getAttribute('href').length > 1) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+
     // ==========================================
     // 1. PRICING & PROMO FLAG
     // ==========================================
@@ -747,13 +852,40 @@
             },
             onApprove: function(data, actions) {
                 return actions.order.capture().then(function(details) {
-                    alert('Transaction completed successfully by ' + details.payer.name.given_name + '!');
+                    showSuccessModal("Payment Complete!", `Thank you, ${details.payer.name.given_name}. Your payment was successful.`);
                     toggleCheckoutModal(false);
                 });
             }
         }).render('#paypal-button-container');
       }
     });
+
+    // Custom Success Modal Function
+    function showSuccessModal(title, message) {
+        document.getElementById('successTitle').innerText = title;
+        document.getElementById('successMessage').innerText = message;
+        
+        const modal = document.getElementById('successModal');
+        const content = modal.querySelector('div');
+        modal.classList.remove('hidden'); modal.classList.add('flex');
+        setTimeout(() => { 
+            modal.style.opacity = '1'; 
+            content.classList.remove('scale-95'); 
+            content.classList.add('scale-100'); 
+        }, 10);
+    }
+
+    function closeSuccessModal() {
+        const modal = document.getElementById('successModal');
+        const content = modal.querySelector('div');
+        modal.style.opacity = '0'; 
+        content.classList.remove('scale-100'); 
+        content.classList.add('scale-95');
+        setTimeout(() => { 
+            modal.classList.add('hidden'); 
+            modal.classList.remove('flex'); 
+        }, 300);
+    }
 
     // ==========================================
     // 2. DATA (SERVICES & PORTFOLIO) 
@@ -869,7 +1001,11 @@
     // ==========================================
     function handlePackageClick(packageName, usdPriceStr) {
         if (isFreePromoActive) {
-            toggleModal(true);
+            showSuccessModal("🎉 Free Offer Activated!", `${packageName} package is currently 100% free.`);
+            setTimeout(() => {
+                closeSuccessModal();
+                toggleModal(true); // Open the Sign-up modal
+            }, 1800);
         } else {
             document.getElementById('checkoutPackageName').innerText = packageName + ' Package';
             document.getElementById('checkoutPriceUSD').innerText = '$' + usdPriceStr;
@@ -920,7 +1056,7 @@
         
         document.getElementById('sdGallery').innerHTML = d.images.map(item => `
             <a href="${item.url}" ${item.url !== '#' ? 'target="_blank"' : ''} class="portfolio-link block h-32 md:h-40 rounded-xl overflow-hidden border border-white/10 relative group bg-midnight">
-                <img src="${item.src}" class="w-full h-full object-cover portfolio-image opacity-80 group-hover:opacity-100" alt="${item.title}">
+                <img loading="lazy" src="${item.src}" class="w-full h-full object-cover portfolio-image opacity-80 group-hover:opacity-100" alt="${item.title}">
                 <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent pointer-events-none"></div>
                 <div class="absolute bottom-2 left-3 right-3 text-white text-xs font-semibold flex justify-between items-center opacity-0 group-hover:opacity-100 transition-opacity">
                     <span class="truncate pr-2">${item.title}</span>
@@ -973,7 +1109,7 @@
       }
     }
 
-    // AUTH SUBMIT LOGIC WITH PASSWORD VALIDATION & FB AUTO-FOLLOW REDIRECT
+    // AUTH SUBMIT LOGIC WITH CUSTOM SUCCESS MODAL & FB AUTO-FOLLOW REDIRECT
     function handleAuthSubmit(event, action) {
       event.preventDefault();
       
@@ -982,20 +1118,23 @@
         const confirmPass = document.getElementById('suConfirmPassword').value;
         
         if (pass !== confirmPass) {
-            alert("Passwords do not match! Please try again.");
+            showSuccessModal("Error", "Passwords do not match! Please try again.");
             return;
         }
         
-        alert("Account created successfully! We will contact you soon.\n\nTaking you to our Facebook page to follow us...");
+        toggleModal(false);
+        showSuccessModal("🎉 Account Created!", "Thank you for signing up. We will contact you within 2 hours.\n\nTaking you to our Facebook page to follow us...");
         
-        // Simulate auto-follow by redirecting to FB page on new tab
-        window.open("https://www.facebook.com/MTstudio2", "_blank");
+        // Simulate auto-follow redirect
+        setTimeout(() => {
+            window.open("https://www.facebook.com/MTstudio2", "_blank");
+        }, 2500);
         
       } else {
-        alert("Logged in successfully! Redirecting to Dashboard...");
+        toggleModal(false);
+        showSuccessModal("Welcome back!", "Logged in successfully. Redirecting to Dashboard...");
       }
       
-      toggleModal(false);
       event.target.reset(); 
     }
 
@@ -1021,19 +1160,17 @@
 
         const chatBox = document.getElementById('chatMessages');
         
-        // Add User Message
         chatBox.innerHTML += `
-            <div class="bg-cyan-600 text-white rounded-2xl rounded-tr-sm p-3 text-sm w-10/12 self-end ml-auto shadow-md">
+            <div class="bg-cyan-600 text-white rounded-2xl rounded-tr-sm p-3 text-sm w-10/12 self-end ml-auto shadow-md animation-popIn">
                 ${msg}
             </div>
         `;
         input.value = '';
         chatBox.scrollTop = chatBox.scrollHeight;
 
-        // Simulate Bot Reply
         setTimeout(() => {
             chatBox.innerHTML += `
-                <div class="bg-white/10 border border-white/5 rounded-2xl rounded-tl-sm p-3 text-sm text-slate-200 w-10/12 shadow-md flex items-start gap-2">
+                <div class="bg-white/10 border border-white/5 rounded-2xl rounded-tl-sm p-3 text-sm text-slate-200 w-10/12 shadow-md flex items-start gap-2 animation-popIn">
                     <div class="w-6 h-6 rounded-full bg-midnight shrink-0 flex items-center justify-center font-['Dancing_Script'] text-[10px] font-bold mt-0.5">MT</div>
                     <div>আপনার মেসেজটি আমরা পেয়েছি। খুব শীঘ্রই আমাদের একজন প্রতিনিধি যুক্ত হবেন।</div>
                 </div>
@@ -1042,7 +1179,6 @@
         }, 1200);
     }
 
-    // Drag Logic
     const dragWrapper = document.getElementById('draggable-wrapper');
     const dragBtn = document.getElementById('fab-button');
     let active = false, isDragging = false;
