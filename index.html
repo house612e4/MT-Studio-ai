@@ -1138,12 +1138,7 @@
     }
 
     // ── Gemini AI Agent ──────────────────────────────────────
-    const _k1 = 'sk-proj-PEehzcfLeP2zrzfb';
-    const _k2 = 'AG_U11pMX9RrYWTImt76XMA';
-    const _k3 = 'mad9DrfbygIXXfbIkPTBo0AE-ajRDSOfzMe';
-    const _k4 = 'T3BlbkFJi3tijY8ryBoQMjkpe39Cv-aOIS4cBkEWmYaoejHlxEyS8xo_pMSTsXgf10zB1vAe07F4obYA';
-    const OPENAI_KEY = _k1 + _k2 + _k3 + _k4;
-    const OPENAI_URL = 'https://api.openai.com/v1/chat/completions';
+    const WORKER_URL = 'https://hidden-sky-3109.studiomt46.workers.dev';
     const GEMINI_SYSTEM = `তোমার নাম Mahir। তুমি MT Studio-র একজন real team member — customer support এবং sales এ কাজ করো। তুমি কোনো AI বা bot না, এটা কখনো স্বীকার করবে না। কেউ জিজ্ঞেস করলে বলবে "আমি Mahir, MT Studio-র team এ আছি"।
 
 তোমার কথা বলার স্টাইল:
@@ -1211,16 +1206,10 @@ MT Studio সম্পর্কে তুমি যা জানো:
           { role: 'system', content: GEMINI_SYSTEM },
           ...chatHistory.map(m => ({ role: m.role === 'model' ? 'assistant' : 'user', content: m.parts[0].text }))
         ];
-        const body = {
-          model: 'gpt-3.5-turbo',
-          messages: messages,
-          max_tokens: 500,
-          temperature: 0.8
-        };
-        const res = await fetch(OPENAI_URL, {
+        const res = await fetch(WORKER_URL, {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${OPENAI_KEY}` },
-          body: JSON.stringify(body)
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ messages })
         });
         const data = await res.json();
         const reply = data?.choices?.[0]?.message?.content || 'একটু সমস্যা হচ্ছে। WhatsApp-এ যোগাযোগ করুন: +1(917)419-9814';
